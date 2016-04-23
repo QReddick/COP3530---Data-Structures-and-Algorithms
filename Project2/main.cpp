@@ -54,7 +54,7 @@ int main(int argc, char** argv)
 	int numberOfRealms; 
 	std::string charm; 
 	int magiCount; 
-	std::string magiOrder; 
+	int magiOrder[]; 
 	int numberOfCharms = 1; //the charm can change, but only one can exist at a time. 
 		
 	std::cin>>numberOfRealms; // recieve number of realms
@@ -69,7 +69,13 @@ int main(int argc, char** argv)
 		std::getline(std::cin, charm); //recieves name of charm 
 		int numberOfMagi; 	
 		std::cin >> numberOfMagi; //recieves number of Magi in realm 
-		std::getline(std::cin, magiOrder);  // recieves array of Magi as a string *parse later*
+		
+		// get magiOrder 
+		int g = 0; 
+		while(i < numberOfMagi && std::cin>>magiOrder[g]) {
+			g++;
+		}
+		/////std::getline(std::cin, magiOrder);  // recieves array of Magi as a string *parse later*
 	}
 	
 	/* argument recpetion complete*/ 
