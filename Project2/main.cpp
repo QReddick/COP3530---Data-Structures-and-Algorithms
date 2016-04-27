@@ -3,10 +3,10 @@
 //using namespace std;
 
 
-int LIS_Helper(int arr[], int arr_size, int *result_size) {
+int LIS_Helper(int arr[], int arr_size, int *res_ref) {
 	
 	// if the size of the array is only 1, it's resulting subsquence is only 1
-	if (n == 1) {
+	if (arr_size == 1) {
 		return 1;
 	}
 
