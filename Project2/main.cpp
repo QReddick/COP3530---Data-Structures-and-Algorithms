@@ -39,7 +39,7 @@ int LIS(int arr[], int arr_size) {
 	int res = 1;
 
 	// find the longest subsequence
-	LIS_Helper(arr, n, &res);
+	LIS_Helper(arr, arr_size, &res);
 
 
 	// return res
