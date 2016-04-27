@@ -16,7 +16,7 @@ int LIS_Helper(int arr[], int arr_size, int *res_ref) {
 
 	// rescursively get all LIS ending with arr[0] to arr[arr_size - 1]
 	for (int i = 1; i < arr_size; i++) {
-		res = LongestIncreasingSubsequence(arr, i, result_size);
+		result = LIS_Helper(arr, i, result_size);
 
 		if (arr[i-1] < arr[arr_size - 1] && result + 1 > result_ending) {
 			result_ending = result + 1;
