@@ -3,47 +3,34 @@
 //using namespace std;
 
 
-int LIS_Helper(int arr[], int arr_size, int *res_ref) {
+// arr[] of size m
+int lis(int arr[], int m) {
+
+	int *lis, i, j, max = 0;
+
+	lis = (int*) malloc(sizeof(int) * m);
+
+	for (i = 0; i < m; i++) {
+		lis[i] = 1;
+	}
+
 	
-	// if the size of the array is only 1, it's resulting subsquence is only 1
-	if (arr_size == 1) {
-		return 1;
-	}
-
-	// result_ending is the length of the LIS ending with arr[arr_size - 1]
-	int result, result_ending = 1;
-
-
-	// rescursively get all LIS ending with arr[0] to arr[arr_size - 1]
-	for (int i = 1; i < arr_size; i++) {
-		result = LIS_Helper(arr, i, result_size);
-
-		if (arr[i-1] < arr[arr_size - 1] && result + 1 > result_ending) {
-			result_ending = result + 1;
+	for (i = 1; i < m; i++) {
+		for (j = 0; j < i; j++) {
+			if (arr[i] > arr[j] && lis[i] < lis[j] +1) {
+				lis[i] = lis[j] + 1;
+			}
 		}
-	} 
-
-	/*Compare result_ending with the overal result_size
-		update the overall result_size if needed */
-	if (*result_size < result_ending) {
-		*result_size = result_ending;
 	}
 
-	// return length of LIS ending with arr[arr_size - 1]
-	return result_ending;
-}
+	for (i = 0; i < m; i++) {
+		if (max < lis[i]) {
+			max = lis[i];
+		}
+	}
+	
+	return max;
 
-int LIS(int arr[], int arr_size) {
-
-	//res will be the size of the longest subsquence found
-	int res = 1;
-
-	// find the longest subsequence
-	LIS_Helper(arr, arr_size, &res);
-
-
-	// return res
-	return res;
 }
 
 int edit_distance(std::string s1, std::string s2, int x, int y) // where x and y are length of string 1 and 2.
@@ -98,6 +85,9 @@ int main(int argc, char** argv)
 		while(i < numberOfMagi && std::cin>>magiOrder[g]) {
 			g++;
 		}
+		// find size of magiOrder
+		int n = sizeof(magiOrder)/sizeof(magiOrder[0]);
+		lis(magiOrder, n);
 		/////std::getline(std::cin, magiOrder);  // recieves array of Magi as a string *parse later*
 	}
 	
